@@ -33,9 +33,11 @@ class encryption {
 	}
 	
 	
-	string decryption(const string& ecryptedtext_) {
+	string decryption(const string& encryptedtext_) {
 		decryptedtext_ = encryptedtext_;
-		for (size_t i = 0; i + 4 < decryptedtext_(); i += 5) {
+		int left = 0, right = decryptedtext_.length() - 1;
+		
+		for (size_t i = 0; i + 4 < decryptedtext_.length(); i += 5) {
 			if (i + 1 < decryptedtext_.length()) {
             std::swap(decryptedtext_[i], decryptedtext_[i + 1]);
 			}
