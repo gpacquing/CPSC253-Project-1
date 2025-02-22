@@ -4,15 +4,14 @@
 #include <algorithm>
 
 class supasecret {
-	
-	public:
+    public:
 	supasecret(const std::string& input_file_, const std::string& output_file_, size_t user_key_ = 0): 
 	 input_file_name_(input_file_), output_file_name_(output_file_), key_(user_key_) {}
 	
 	
-    void encryptFile(const std::string& input_file_name_, const std::string& output_file_name, size_t key_) {
+    void encryptFile() {
         std::ifstream inputFile(input_file_name_);
-        std::ofstream outputFile(output_file_name);
+        std::ofstream outputFile(output_file_name_);
         if (!inputFile.is_open() || !outputFile.is_open() ) {
             std::cerr << "Error: Try again, unable to open your file." << std::endl;
             return;
@@ -20,7 +19,7 @@ class supasecret {
 
         std::string line_;
         while (getline(inputFile, line_)) {
-            outputFile << this->encryption(line_, key_) << endl;
+            outputFile << this->encryption(line_, key_) << std::endl;
         }
 
         inputFile.close();
@@ -28,9 +27,9 @@ class supasecret {
     }
 	
 	
-    void decryptFile(const std::string& input_file_name_, const std::string& output_file_name, size_t key_) {
+    void decryptFile() {
         std::ifstream inputFile(input_file_name_);
-        std::ofstream outputFile(output_file_name);
+        std::ofstream outputFile(output_file_name_);
         if (!inputFile.is_open() || !outputFile.is_open() ) {
             std::cerr << "Error: Try again, unable to open your file." << std::endl;
             return;
@@ -38,7 +37,7 @@ class supasecret {
 
         std::string line_;
         while (getline(inputFile, line_)) {
-            outputFile << this->decryption(line_, key_) << endl;
+            outputFile << this->decryption(line_, key_) << std::endl;
         }
 
         inputFile.close();
@@ -46,7 +45,7 @@ class supasecret {
     }
 	
 	
-	private:
+    private:
     std::string input_file_name_;
     std::string output_file_name_;
     size_t key_;

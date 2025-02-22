@@ -17,16 +17,14 @@ int main() {
 	supasecret user_secret(input_file_, output_file_, key_);
 	
 	if (crypt_opt_ == e) {
-		
+		user_secret.encryptFile();
 		
 	} else if (crypt_opt_ == d) {
-		
-		
+		user_secret.decryptFile();
 		
 	} else {
 		cout << "Invalid input." << std::endl;
 	}
-	
 	
 	return 0;
 }
