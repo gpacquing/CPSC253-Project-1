@@ -58,6 +58,9 @@ class supasecret {
         left++;
         right--;
 		}
+		for (size_t i = 0; i < encryptedtext_.length(); ++i) {
+            encryptedtext_[i] = static_cast<char>(encryptedtext_[i] + key_);
+        }
 		for (size_t i = 0; i + (2 + key_) < encryptedtext_.length(); i += (3 + key_)) {
 			if (i + 1 < encryptedtext_.length()) {
             std::swap(encryptedtext_[i], encryptedtext_[i + 1]);
@@ -85,6 +88,9 @@ class supasecret {
             std::swap(decryptedtext_[i], decryptedtext_[i + 1]);
 			}
 		}
+		for (size_t i = 0; i < decryptedtext_.length(); ++i) {
+            decryptedtext_[i] = static_cast<char>(decryptedtext_[i] - key_);
+        }
 		while (left < right) {
         std::swap(decryptedtext_[left], decryptedtext_[right]);
         left++;
